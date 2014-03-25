@@ -50,7 +50,7 @@ try:
 except NameError:
     from sets import Set as set
 
-from rad_util import is_rotated
+from modulr.libs.rad_util import is_rotated
 
 
 class CycleError(Exception):
