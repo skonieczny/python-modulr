@@ -1,4 +1,12 @@
-python-modulr
-=============
+ModulR
+======
 
-Simple framework for pluginable application development. Everything is a component.
+Simple, modular, pluginable application base.
+Allows to easily build applications created from set of components
+specified at runtime (plugins).
+
+
+Everithing is a component
+=========================
+
+TODO...
