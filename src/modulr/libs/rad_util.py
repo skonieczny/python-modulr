@@ -65,11 +65,6 @@ import sys
 import time
 import random
 
-try:
-    True, False
-except NameError:
-    True, False = (1==1, 0==1)
-
 
 def int2bin(i, n):
     """Convert decimal integer i to n-bit binary number (string).
