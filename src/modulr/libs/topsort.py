@@ -78,9 +78,9 @@ def topsort(pairlist):
     children = {}  # element -> list of successors 
     for parent, child in pairlist: 
         # Make sure every element is a key in num_parents.
-        if not num_parents.has_key( parent ): 
+        if not parent in num_parents: 
             num_parents[parent] = 0 
-        if not num_parents.has_key( child ): 
+        if not child in num_parents: 
             num_parents[child] = 0 
 
         # Since child has a parent, increment child's num_parents count.
@@ -96,7 +96,7 @@ def topsort(pairlist):
     # Note that answer grows *in* the loop.
     for parent in answer: 
         del num_parents[parent]
-        if children.has_key( parent ): 
+        if parent in children: 
             for child in children[parent]: 
                 num_parents[child] -= 1
                 if num_parents[child] == 0: 
@@ -158,9 +158,9 @@ def topsort_levels(pairlist):
     children = {}  # element -> list of successors 
     for parent, child in pairlist: 
         # Make sure every element is a key in num_parents.
-        if not num_parents.has_key( parent ): 
+        if not parent in num_parents: 
             num_parents[parent] = 0 
-        if not num_parents.has_key( child ): 
+        if not child in num_parents: 
             num_parents[child] = 0 
 
         # Since child has a parent, increment child's num_parents count.
@@ -218,7 +218,7 @@ def topsort_levels_core(num_parents, children):
 
             del num_parents[level_parent]
 
-            if children.has_key(level_parent):
+            if level_parent in children:
                 for level_parent_child in children[level_parent]:
                     num_parents[level_parent_child] -= 1
                 del children[level_parent]
