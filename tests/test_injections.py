@@ -6,7 +6,8 @@ from modulr.injections import Injector, get_injections, InjectorError
 class GetInjectionsTest(unittest.TestCase):
     
     def _test(self, fun, expected_output):
-        self.assertItemsEqual(get_injections(fun), expected_output)
+        assertItemsEqual = getattr(self, 'assertItemsEqual', None) or getattr(self, 'assertCountEqual', None)
+        assertItemsEqual(get_injections(fun), expected_output)
 
     def test_empty(self):
         self._test(lambda: None, [])

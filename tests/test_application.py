@@ -29,7 +29,7 @@ class SimilarTo(object):
 
 
 class ApplicationTest(unittest.TestCase):
-
+    
     def test_no_components(self):
         cfr = ComponentFactoryRegistry()
         app = Application({}, cfr)
