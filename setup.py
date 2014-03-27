@@ -12,7 +12,6 @@ setup(
     url='https://github.com/stanislaw-skonieczny/python-modulr',
     packages=['modulr'],
     package_dir = {'': 'src'},
-    install_requires=open(os.path.join(root, 'requirements.txt')).readlines(),
     test_suite='tests',
     include_package_data=True,
     zip_safe=False,
