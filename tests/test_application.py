@@ -50,7 +50,7 @@ class ApplicationTest(unittest.TestCase):
         cfr.register(ConfiguredComponentFactory('component_name', factory, sentinel.component_config))
         app = Application({}, cfr)
         app.start()
-        self.assertListEqual(component_calls, [SimilarTo(config=sentinel.component_config, name='component_name')])
+        self.assertListEqual(component_calls, [SimilarTo(config=sentinel.component_config, name='component_name', scripts_manager=app._scripts_manager)])
         self.assertEquals(1, component_instance.inited)
 
     def test_one_depend(self):

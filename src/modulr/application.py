@@ -1,26 +1,32 @@
 from modulr.libs.topsort import topsort, CycleError
 from modulr.injections import Injector, get_injections
+from modulr.scripts import ScriptsManager
 
 
 class ComponentContext(object):
     
-    def __init__(self, name, config):
+    def __init__(self, name, config, scripts_manager):
         self.name = name
         self.config = config
+        self.scripts_manager = scripts_manager
 
 
 class Application(object):
-    
+
     def __init__(self, config, component_factory_registry):
         self._config = config
         self._component_factory_registry = component_factory_registry
         self._components = {}
+        self._scripts_manager = ScriptsManager()
+        
+    def get_scripts_manager(self):
+        return self._scripts_manager
 
     def _create_injector(self):
         return Injector()
 
     def _create_component_context(self, configured_component_factory):
-        return ComponentContext(configured_component_factory.get_name(), configured_component_factory.get_config())
+        return ComponentContext(configured_component_factory.get_name(), configured_component_factory.get_config(), self._scripts_manager)
 
     def start(self):
         injector = self._create_injector()
