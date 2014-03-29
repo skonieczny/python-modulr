@@ -9,14 +9,14 @@ class ScriptsManagerTest(unittest.TestCase):
     def test_empty(self):
         sm = ScriptsManager()
         with self.assertRaises(ValueError):
-            sm.run_script_from_argv([sentinel.program_name, 'no_such_command'])
+            sm.run_script_from_args(['no_such_command'])
 
     def test_simple_call(self):
         script_name = 'script_name'
         script = Mock(return_value=sentinel.output)
         sm = ScriptsManager()
         sm.register('script_name', script)
-        output = sm.run_script_from_argv([sentinel.program_name, 'script_name'])
+        output = sm.run_script_from_args(['script_name'])
         self.assertEquals(output, sentinel.output)
         script.assert_called_once_with([])
 
@@ -25,6 +25,6 @@ class ScriptsManagerTest(unittest.TestCase):
         script = Mock(return_value=sentinel.output)
         sm = ScriptsManager()
         sm.register('script_name', script)
-        output = sm.run_script_from_argv([sentinel.program_name, 'script_name', sentinel.arg1, sentinel.arg2])
+        output = sm.run_script_from_args(['script_name', sentinel.arg1, sentinel.arg2])
         self.assertEquals(output, sentinel.output)
         script.assert_called_once_with([sentinel.arg1, sentinel.arg2])

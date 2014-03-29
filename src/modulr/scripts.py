@@ -14,8 +14,8 @@ class ScriptsManager(object):
         if not script_name in self._registry:
             raise ValueError('Unknown script: {}.'.format(script_name))
         return self._registry[script_name](args)
-        
-    def run_script_from_argv(self, argv):
-        script_name = argv[1]
-        args = argv[2:]
+
+    def run_script_from_args(self, parameters):
+        script_name = parameters[0]
+        args = parameters[1:]
         return self.run_script(script_name, args)
